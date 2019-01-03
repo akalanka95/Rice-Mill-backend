@@ -1,13 +1,7 @@
 package com.akalanka.riceMill;
 
-import com.akalanka.riceMill.model.DailyExpense;
-import com.akalanka.riceMill.model.Labour;
-import com.akalanka.riceMill.model.LabourSalary;
-import com.akalanka.riceMill.model.LabourSalaryToPaid;
-import com.akalanka.riceMill.repository.DailyExpenseRepository;
-import com.akalanka.riceMill.repository.LabourRepository;
-import com.akalanka.riceMill.repository.LabourSalaryRepository;
-import com.akalanka.riceMill.repository.LabourSalaryToPaidRepository;
+import com.akalanka.riceMill.model.*;
+import com.akalanka.riceMill.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -25,6 +19,8 @@ public class RiceMillApplication implements CommandLineRunner {
     private DailyExpenseRepository dailyExpenseRepository;
     @Autowired
     private LabourSalaryToPaidRepository labourSalaryToPaidRepository;
+    @Autowired
+    private PaddyTypeRepository paddyTypeRepository;
 
 	public static void main(String[] args) {
 		SpringApplication.run(RiceMillApplication.class, args);
@@ -107,12 +103,18 @@ public class RiceMillApplication implements CommandLineRunner {
 		dailyExpenseRepository.save(d1);
 
         LabourSalaryToPaid ls1 = new LabourSalaryToPaid();
+        ls1.setName(l1.getName());
         ls1.setId(1);
         ls1.setSalary(0);
         ls1.setAdvance(0);
         ls1.setAmountTopaid(0);
         ls1.setLabour(l1);
         labourSalaryToPaidRepository.save(ls1);
+
+        PaddyType p1 = new PaddyType();
+        p1.setPaddyName("Samba");
+        paddyTypeRepository.save(p1);
+
 	}
 
 }

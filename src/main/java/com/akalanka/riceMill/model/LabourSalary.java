@@ -10,6 +10,7 @@ public class LabourSalary {
     private double salary;
     private double advance;
     private String date;
+    private String name;
     //private double amountTopaid;
     /*@OneToOne(cascade = CascadeType.DETACH)
     @JoinColumn(name="labourId")
@@ -66,5 +67,13 @@ public class LabourSalary {
 
     public void setLabour(Labour labour) {
         this.labour = labour;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }
