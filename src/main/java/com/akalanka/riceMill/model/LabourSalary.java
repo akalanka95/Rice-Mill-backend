@@ -9,9 +9,15 @@ public class LabourSalary {
     private Integer id;
     private double salary;
     private double advance;
-    private double amountTopaid;
-    @OneToOne(cascade = CascadeType.ALL)
+    private String date;
+    //private double amountTopaid;
+    /*@OneToOne(cascade = CascadeType.DETACH)
     @JoinColumn(name="labourId")
+    private Labour labour;*/
+
+    @ManyToOne(cascade = {CascadeType.DETACH,CascadeType.MERGE,
+            CascadeType.REFRESH})
+    @JoinColumn(name = "labour_id")
     private Labour labour;
 
     public Integer getId() {
@@ -20,6 +26,14 @@ public class LabourSalary {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
     }
 
     public double getSalary() {
@@ -38,13 +52,13 @@ public class LabourSalary {
         this.advance = advance;
     }
 
-    public double getAmountTopaid() {
+    /*public double getAmountTopaid() {
         return amountTopaid;
     }
 
     public void setAmountTopaid(double amountTopaid) {
         this.amountTopaid = amountTopaid;
-    }
+    }*/
 
     public Labour getLabour() {
         return labour;

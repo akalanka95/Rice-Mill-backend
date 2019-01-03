@@ -1,6 +1,9 @@
 package com.akalanka.riceMill.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Labour {
@@ -14,6 +17,11 @@ public class Labour {
     private String contact2;
     private String role;
     private String idNo;
+    @OneToMany(mappedBy = "labour",
+            cascade = {CascadeType.DETACH,CascadeType.MERGE,
+                    CascadeType.REFRESH})
+    @JsonIgnore
+    private List<LabourSalary> labourSalary;
 
     public Integer getId() {
         return id;
@@ -31,11 +39,11 @@ public class Labour {
         this.code = code;
     }
 
-    public String getFullName() {
+    public String getName() {
         return name;
     }
 
-    public void setFullName(String name) {
+    public void setName(String name) {
         this.name = name;
     }
 
