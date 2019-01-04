@@ -21,6 +21,8 @@ public class RiceMillApplication implements CommandLineRunner {
     private LabourSalaryToPaidRepository labourSalaryToPaidRepository;
     @Autowired
     private PaddyTypeRepository paddyTypeRepository;
+    @Autowired
+    private RiceRepository riceRepository;
 
 	public static void main(String[] args) {
 		SpringApplication.run(RiceMillApplication.class, args);
@@ -114,6 +116,36 @@ public class RiceMillApplication implements CommandLineRunner {
         PaddyType p1 = new PaddyType();
         p1.setPaddyName("Samba");
         paddyTypeRepository.save(p1);
+
+        Rice r1 = new Rice();
+        r1.setId(1);
+        r1.setRiceName("Naadu");
+        riceRepository.save(r1);
+
+        Rice r2 = new Rice();
+        r2.setId(2);
+        r2.setRiceName("Samba");
+        riceRepository.save(r2);
+
+        Rice r3 = new Rice();
+        r3.setId(3);
+        r3.setRiceName("Keeri Samba");
+        riceRepository.save(r3);
+
+        Rice r4 = new Rice();
+        r4.setId(4);
+        r4.setRiceName("Kekulu");
+        riceRepository.save(r4);
+
+        Rice r5 = new Rice();
+        r5.setId(5);
+        r5.setRiceName("Broken");
+        riceRepository.save(r5);
+
+        Rice r6 = new Rice();
+        r6.setId(6);
+        r6.setRiceName("Other");
+        riceRepository.save(r6);
 
 	}
 
